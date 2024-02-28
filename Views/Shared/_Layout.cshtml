@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HelloDoc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HelloDoc.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <header>
+        <nav class="d-flex justify-content-between align-items-center" style="background-color:white; box-shadow:1px 0px 5px grey">
+            <div class="px-5 py-1">
+                <img style="width:30%" src="~/image/site_logo.png" id="btnSwitch" />
+            </div>
+            <div class="px-2 py-1 mx-5" style="border:2px solid #bdeff5;color:#bdeff5; border-radius:5px">
+                <i class="bi bi-moon"></i>
+            </div>
+        </nav>
+    </header>
+   
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

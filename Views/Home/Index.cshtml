@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+    
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HelloDoc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HelloDoc.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+   
+    
+    <div class="d-flex flex-column align-items-center gap-4">
+
+        <div class="mt-5">
+            <img src="~/image/site_logo.png" />
+        </div>
+        <div>
+            <a asp-controller="Home" asp-action="SubAreq" class="btn-patient-req same closehover"> Submit A Request</a>
+        </div>
+        <div>
+            <a class="btn-patient-reg same closehover"> Registered Patients</a>
+        </div>
+        <div style="margin-top:13%; font-size:0.9rem;">
+            <p class="px-2 " style="background-color:#f9f9f9; border-radius:2px">
+
+                Terms Of Condition | Privacy Policy
+            </p>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+   
+</body>
+</html>
