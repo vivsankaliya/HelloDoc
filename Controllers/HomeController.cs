@@ -1,17 +1,26 @@
 using HelloDoc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelloDoc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly HelloDocContext HelloDoc;
+
+        public HomeController(HelloDocContext HelloDoc)
         {
-            _logger = logger;
+            this.HelloDoc = HelloDoc;
         }
+
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {
@@ -20,12 +29,26 @@ namespace HelloDoc.Controllers
 
         public IActionResult SubAreq()
         {
+
             return View();
+
         }
+
         public IActionResult PatientInfo()
         {
             return View();
         }
+
+        [HttpPost]
+
+        public async Task<IActionResult> PatientInfo(User dtail)
+        {
+            dtail.AspNetUserId = "1";
+            await HelloDoc.Users.AddAsync(dtail);
+            await HelloDoc.SaveChangesAsync();
+            return RedirectToAction("SubAreq");
+        }
+
         public IActionResult famfrdInfo()
         {
             return View();

@@ -1,4 +1,7 @@
-﻿@*
+﻿@model HelloDoc.Models.User;
+
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -11,7 +14,7 @@
 
 <div class="mt-2 px-3" style="background-color:white;margin-inline:20%">
     
-    <form>
+    <form  asp-action="PatientInfo" >
 
         @* ---patient info *@
         <div>
@@ -24,17 +27,16 @@
             <div class="row p-2">
                 <div class="col-md-6">
 
-                    <input type="text" class="form-control" placeholder="First name">
+                    <input type="text" asp-for="FirstName" class="form-control" placeholder="First name">
                 </div>
                 <div class="col-md-6">
 
-                    <input type="text" class="form-control" placeholder="Last name">
+                    <input type="text" asp-for="LastName" class="form-control" placeholder="Last name">
                 </div>
 
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-
                     <input type="date" class="form-control" placeholder="Date of Birth">
                 </div>
             </div>
@@ -48,10 +50,10 @@
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Email">
+                    <input type="text" asp-for="Email" class="form-control" placeholder="Email">
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="(201)555-0123">
+                    <input type="text"  class="form-control" placeholder="(201)555-0123">
                 </div>
             </div>
         </div>
@@ -101,11 +103,16 @@
         </div>
 
         <div class="p-2 py-4  d-flex gap-2 justify-content-end" >
-            <button type="button" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-secondary">Cancel</button>
-
+            <input type="submit" class="btn btn-primary"  >
+            <a type="button" class="btn btn-secondary" asp-controller="Home" asp-action="SubAreq">Cancel</a>
         </div>
 
 
     </form>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
