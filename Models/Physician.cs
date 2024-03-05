@@ -5,9 +5,9 @@ namespace HelloDoc.Models;
 
 public partial class Physician
 {
-    public int PhysicianId { get; set; }
+    public long PhysicianId { get; set; }
 
-    public string? AspNetUserId { get; set; }
+    public long? AspNetUserId { get; set; }
 
     public string FirstName { get; set; } = null!;
 
@@ -43,11 +43,11 @@ public partial class Physician
 
     public string? AltPhone { get; set; }
 
-    public string CreatedBy { get; set; } = null!;
+    public long CreatedBy { get; set; }
 
     public DateTime CreatedDate { get; set; }
 
-    public string? ModifiedBy { get; set; }
+    public long? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDate { get; set; }
 

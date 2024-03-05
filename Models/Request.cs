@@ -21,7 +21,7 @@ public partial class Request
 
     public byte Status { get; set; }
 
-    public int? PhysicianId { get; set; }
+    public long? PhysicianId { get; set; }
 
     public string? ConfirmationNumber { get; set; }
 

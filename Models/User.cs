@@ -7,7 +7,7 @@ public partial class User
 {
     public int UserId { get; set; }
 
-    public string? AspNetUserId { get; set; }
+    public long? AspNetUserId { get; set; }
 
     public string FirstName { get; set; } = null!;
 
@@ -17,6 +17,7 @@ public partial class User
 
     public string? Mobile { get; set; }
 
+    public bool? IsMobile { get; set; }
 
     public string? Street { get; set; }
 
@@ -36,10 +37,11 @@ public partial class User
 
     public string CreatedBy { get; set; } = null!;
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
+
     public string? ModifiedBy { get; set; }
 
-    public DateTime? ModifiedDate { get; set; }
+    public DateTime? ModifiedDate { get; set; } = DateTime.Now;
 
     public byte? Status { get; set; }
 

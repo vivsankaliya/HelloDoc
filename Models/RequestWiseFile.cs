@@ -13,7 +13,7 @@ public partial class RequestWiseFile
 
     public DateTime CreatedDate { get; set; }
 
-    public int? Physicianld { get; set; }
+    public long? Physicianld { get; set; }
 
     public int? Adminld { get; set; }
 

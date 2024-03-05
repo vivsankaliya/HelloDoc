@@ -5,7 +5,7 @@ namespace HelloDoc.Models;
 
 public partial class AspNetUser
 {
-    public string Id { get; set; } = null!;
+    public long Id { get; set; }
 
     public string UserName { get; set; } = null!;
 

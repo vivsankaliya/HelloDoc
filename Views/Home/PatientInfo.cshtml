@@ -13,8 +13,8 @@
 </div>
 
 <div class="mt-2 px-3" style="background-color:white;margin-inline:20%">
-    
-    <form  asp-action="PatientInfo" >
+
+    <form asp-action="PatientInfo">
 
         @* ---patient info *@
         <div>
@@ -53,7 +53,7 @@
                     <input type="text" asp-for="Email" class="form-control" placeholder="Email">
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text"  class="form-control" placeholder="(201)555-0123">
+                    <input type="text" asp-for="Mobile" class="form-control" placeholder="(201)555-0123">
                 </div>
             </div>
         </div>
@@ -66,18 +66,18 @@
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Street">
+                    <input type="text" asp-for="Street" class="form-control" placeholder="Street">
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" asp-for="City" class="form-control" placeholder="City">
                 </div>
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Zipcode">
+                    <input type="text" asp-for="ZipCode" class="form-control" placeholder="Zipcode">
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="State">
+                    <input type="text" asp-for="State" class="form-control" placeholder="State">
                 </div>
             </div>
             <div class="p-2">
@@ -96,18 +96,15 @@
             <div class="row p-2">
                 <div class="input-group">
                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-
                 </div>
             </div>
-           
+
         </div>
 
-        <div class="p-2 py-4  d-flex gap-2 justify-content-end" >
-            <input type="submit" class="btn btn-primary"  >
+        <div class="p-2 py-4  d-flex gap-2 justify-content-end">
+            <input type="submit" class="btn btn-primary">
             <a type="button" class="btn btn-secondary" asp-controller="Home" asp-action="SubAreq">Cancel</a>
         </div>
-
-
     </form>
 </div>
 

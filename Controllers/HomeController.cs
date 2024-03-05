@@ -43,7 +43,16 @@ namespace HelloDoc.Controllers
 
         public async Task<IActionResult> PatientInfo(User dtail)
         {
-            dtail.AspNetUserId = "1";
+            dtail.CreatedBy = dtail.FirstName;
+
+            if (!string.IsNullOrEmpty(dtail.Mobile))
+            {
+                dtail.IsMobile = true;
+            }
+            else
+            {
+                dtail.IsMobile = false;
+            }
             await HelloDoc.Users.AddAsync(dtail);
             await HelloDoc.SaveChangesAsync();
             return RedirectToAction("SubAreq");
