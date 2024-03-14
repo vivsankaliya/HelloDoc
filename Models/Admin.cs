@@ -7,7 +7,7 @@ public partial class Admin
 {
     public int Adminld { get; set; }
 
-    public long AspNetUserld { get; set; }
+    public string AspNetUserld { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
 
@@ -33,7 +33,7 @@ public partial class Admin
 
     public DateTime CreatedDate { get; set; }
 
-    public long? ModifiedBy { get; set; }
+    public string? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDate { get; set; }
 

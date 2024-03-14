@@ -1,8 +1,8 @@
-﻿@*
+﻿@model HelloDoc.Models.FamFrdViewModel;
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
 
 <div class="text-end" style="margin-inline:20%">
     <a asp-controller="Home" asp-action="SubAreq" class="btn btn-back my-4 backbtn"><i class="bi bi-chevron-left"></i>Back</a>
@@ -10,7 +10,7 @@
 
 <div class="mt-2 px-3" style="background-color:white;margin-inline:20%">
 
-    <form>
+    <form asp-action="famfrdInfo" method="post">
 
         @* ---family info *@
 
@@ -20,26 +20,32 @@
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Your First Name">
+                    <input type="text" asp-for="FFirstName" class="form-control" placeholder="Your First Name">
+                    <span asp-validation-for="FFirstName" style="color:red"></span>
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="Your Last Name">
+                    <input type="text" asp-for="FLastName" class="form-control" placeholder="Your Last Name">
                 </div>
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Phone">
+                    <input type="text" asp-for="FPhoneNumber" class="form-control" placeholder="Phone">
+                    <span asp-validation-for="FPhoneNumber" style="color:red"></span>
                 </div>
                 <div class="col-md-6 ">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" asp-for="FEmail" class="form-control" placeholder="Email">
+                    <span asp-validation-for="FEmail" style="color:red"></span>
                 </div>
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Relation With Patient">
+                    <input type="text" asp-for="FRelationName" class="form-control" placeholder="Relation With Patient">
+                    <span asp-validation-for="FRelationName" style="color:red"></span>
                 </div>
             </div>
         </div>
+
+
 
         @* ---patient info *@
         <div>
@@ -51,19 +57,21 @@
             <!-- Patient Contact Information -->
             <div class="row p-2">
                 <div class="col-md-6">
-
-                    <input type="text" class="form-control" placeholder="First name">
+                    <input type="text" asp-for="FirstName" class="form-control" placeholder="Firstname">
+                    <span asp-validation-for="FirstName" style="color:red"></span>
                 </div>
-                <div class="col-md-6">
 
-                    <input type="text" class="form-control" placeholder="Last name">
+                <div class="col-md-6">
+                    <input type="text" asp-for="LastName" class="form-control" placeholder="Last name">
+
                 </div>
 
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
 
-                    <input type="date" class="form-control" placeholder="Date of Birth">
+                    <input type="date" asp-for="BirthDate" class="form-control" placeholder="Date of Birth">
+                    <span asp-validation-for="BirthDate" style="color:red"></span>
                 </div>
             </div>
         </div>
@@ -76,10 +84,12 @@
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Email">
+                    <input type="email" asp-for="Email" class="form-control" placeholder="Email">
+                    <span asp-validation-for="Email" style="color:red"></span>
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="(201)555-0123">
+                    <input type="text" asp-for="Mobile" class="form-control" placeholder="(201)555-0123">
+                    <span asp-validation-for="Mobile" style="color:red"></span>
                 </div>
             </div>
         </div>
@@ -92,18 +102,22 @@
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Street">
+                    <input type="text" asp-for="Street" class="form-control" placeholder="Street">
+                    <span asp-validation-for="Street" style="color:red"></span>
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" asp-for="City" class="form-control" placeholder="City">
+                    <span asp-validation-for="City" style="color:red"></span>
                 </div>
             </div>
             <div class="row p-2">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Zipcode">
+                    <input type="text" asp-for="ZipCode" class="form-control" placeholder="Zipcode">
+                    <span asp-validation-for="ZipCode" style="color:red"></span>
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" class="form-control" placeholder="State">
+                    <input type="text" asp-for="State" class="form-control" placeholder="State">
+                    <span asp-validation-for="State" style="color:red"></span>
                 </div>
             </div>
             <div class="row p-2">
@@ -128,11 +142,17 @@
         </div>
 
         <div class="p-2 py-4  d-flex gap-2 justify-content-end">
-            <button type="button" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a type="button" class="btn btn-secondary" asp-controller="Home" asp-action="SubAreq">Cancel</a>
 
         </div>
 
 
     </form>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
