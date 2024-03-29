@@ -17,9 +17,9 @@ public partial class AspNetUser
 
     public string? Ip { get; set; }
 
-    public DateTime CreatedDate { get; set; } = DateTime.Now;
+    public DateTime CreatedDate { get; set; }
 
-    public DateTime? ModifiedDate { get; set; } = DateTime.Now;
+    public DateTime? ModifiedDate { get; set; }
 
     public virtual ICollection<Admin> AdminAspNetUserldNavigations { get; set; } = new List<Admin>();
 

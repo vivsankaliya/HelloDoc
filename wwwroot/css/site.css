@@ -22,6 +22,16 @@ body {
     margin-bottom: 60px;
     background-color: #faf9f9;
 }
+.p_body {
+    margin-inline: 20%;
+    background-color: white;
+}
+
+@media (max-width: 767px) {
+    .p_body {
+        margin-inline: 5%;
+    }
+}
 
 .same {
     width: 400px;
@@ -54,21 +64,269 @@ body {
 .backbtn {
     border: 2px solid #bdeff5;
     color: #c2e2e5;
+    margin-inline: 20%;
 }
-    .backbtn:hover {
-        color: #c2e2e5;
-    }
 
-    .backarrow {
-        color: #c2e2e5;
+@media (max-width: 767px) {
+    .backbtn {
+        margin-inline: 5%;
     }
+}
+
+@media (max-width: 450px) {
+    .backbtn {
+        display: none;
+    }
+}
+
+
+.backbtn:hover {
+    color: #c2e2e5;
+}
+
+.backarrow {
+    color: #c2e2e5;
+}
 
 
 
 .psubareq {
     border-radius: 5px;
     text-decoration: none;
-    padding-left:5px;
+    padding-left: 5px;
 }
 
 
+
+/*-------------DASHBOARD---------------*/
+.Dashboard .dash-item {
+    box-shadow: 0px 2px 5px gray;
+    background-color: white !important
+}
+
+    .Dashboard .dash-item .dash-inner-items {
+        padding-inline: 2.5rem;
+    }
+
+        .Dashboard .dash-item .dash-inner-items a {
+            color: black;
+            position: relative;
+            padding: 10px 5px;
+            border-bottom: 1px solid white;
+            font-size: 1rem;
+        }
+
+            .Dashboard .dash-item .dash-inner-items a:hover {
+                box-sizing: border-box;
+                color: #00c3d9;
+                border-color: #00c3d9;
+            }
+
+.Dashboard .dashboard-content .history-table {
+    box-shadow: 1px 1px 5px 0px gray;
+    border-top-left-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
+}
+
+.Dashboard .dashboard-content .modal .modal-header {
+    background-color: #00c3d9;
+    color: #ffff;
+}
+
+.Dashboard .dashboard-content .modal .req-btn1 {
+    color: #ffff;
+    text-decoration: none;
+    background-color: #00c3d9;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-inline: 5px
+}
+
+    .Dashboard .dashboard-content .modal .req-btn1:hover {
+        color: #00c3d9;
+        background-color: #ffff;
+        text-decoration: none;
+        border: 1px solid #00c3d9;
+        padding: 0.4rem 0.8rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-inline: 5px;
+    }
+
+.Dashboard .dashboard-content .modal .req-btn2 {
+    color: #00c3d9;
+    text-decoration: none;
+    border: 1px solid #00c3d9;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-inline: 5px;
+}
+
+    .Dashboard .dashboard-content .modal .req-btn2:hover {
+        color: #ffff;
+        text-decoration: none;
+        background-color: #00c3d9;
+        padding: 0.4rem 0.8rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-inline: 5px
+    }
+
+.Dashboard .dashboard-content .history-table .table .cre-req {
+    color: #00c3d9;
+    text-decoration: none;
+    border: 1px solid #00c3d9;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+}
+
+    .Dashboard .dashboard-content .history-table .table .cre-req:hover {
+        background-color: #00c3d9;
+        color: white;
+        transition: all ease-in-out 0.5s;
+    }
+
+.Dashboard .dashboard-content .history-table .table .cre-req-row {
+    text-align: end;
+}
+
+.Dashboard .dashboard-content .history-table .table .d-head {
+    border-bottom: 1px solid #8080804f;
+    background-color: #95929226;
+    padding: 0.8rem 0.6rem;
+}
+
+    .Dashboard .dashboard-content .history-table .table .d-head th {
+        padding: 0.8rem 0.6rem;
+    }
+
+.Dashboard .dashboard-content .history-table .table .dh-third, .d-third {
+    text-align: center;
+}
+
+.Dashboard .dashboard-content .history-table .table tbody .p-data {
+    border-bottom: 1px solid #8080804f;
+    padding: 1rem 0rem;
+}
+
+    .Dashboard .dashboard-content .history-table .table tbody .p-data .patient-docs {
+        color: #00c3d9;
+        text-decoration: none;
+        border: 1px solid #00c3d9;
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+    }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .patient-docs:hover {
+            background-color: #00c3d9;
+            color: white;
+            transition: all ease-in-out 0.5s;
+        }
+
+    .Dashboard .dashboard-content .history-table .table tbody .p-data td {
+        padding: 0.8rem 0.6rem;
+    }
+
+    .Dashboard .dashboard-content .history-table .table tbody .p-data .d-first {
+        max-width: 25rem !important;
+        width: 25%;
+        min-width: 10rem;
+    }
+
+    .Dashboard .dashboard-content .history-table .table tbody .p-data .d-second {
+        max-width: 25rem !important;
+        width: 25%;
+        min-width: 10rem;
+    }
+
+@media (max-width : 768px) {
+    .Dashboard .dashboard-content {
+        padding: 1.5rem !important;
+    }
+
+        .Dashboard .dashboard-content .history-table .table .d-head th {
+            padding: 0.6rem 0.4rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data td {
+            padding: 0.6rem 0.4rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .d-first {
+            max-width: 16rem !important;
+            width: 25%;
+            min-width: 8rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .d-second {
+            max-width: 16rem !important;
+            width: 25%;
+            min-width: 8rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table .d-third {
+            text-align: center;
+            width: 30%;
+            min-width: 8rem;
+        }
+}
+
+@media (max-width : 450px) {
+    html {
+        font-size: 12px !important;
+    }
+
+    .Dashboard .dashboard-content {
+        padding: 1rem !important;
+    }
+
+        .Dashboard .dashboard-content .history-table .table .d-head th {
+            padding: 0.4rem 0.3rem;
+            min-width: 7rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .d-second {
+            max-width: 16rem !important;
+            width: 25%;
+            min-width: 5rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .d-first {
+            max-width: 16rem !important;
+            width: 25%;
+            min-width: 5rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data td {
+            padding: 0.4rem 0.3rem;
+        }
+}
+
+@media (max-width : 350px) {
+    .Dashboard .dashboard-content {
+        padding: .5rem !important;
+    }
+
+        .Dashboard .dashboard-content .history-table .table .d-head th {
+            padding: 0.1rem;
+            min-width: 7rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .d-second {
+            min-width: 0rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data .d-first {
+            min-width: 0rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table tbody .p-data td {
+            padding: 0.1rem;
+        }
+
+        .Dashboard .dashboard-content .history-table .table .d-third {
+            min-width: 0rem;
+        }
+}

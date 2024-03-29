@@ -1,4 +1,4 @@
-﻿@model HelloDoc.Models.FamFrdViewModel;
+﻿@model HelloDoc.Models.FamFrdView;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,7 +10,7 @@
 
 <div class="mt-2 px-3" style="background-color:white;margin-inline:20%">
 
-    <form asp-action="famfrdInfo" method="post">
+    <form asp-action="famfrdInfo" method="post" enctype="multipart/form-data">
 
         @* ---family info *@
 
@@ -51,7 +51,7 @@
         <div>
             <div class="p-2">
                 <h6 class="py-2">Patient Information</h6>
-                <textarea class="form-control" id="patientInfo" rows="3" placeholder="Enter Brief Dtail Of Symptoms (optional)"></textarea>
+                <textarea class="form-control" asp-for="Discription" id="patientInfo" rows="3" placeholder="Enter Brief Dtail Of Symptoms (optional)"></textarea>
             </div>
 
             <!-- Patient Contact Information -->
@@ -135,7 +135,7 @@
             </div>
             <div class="row p-2">
                 <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    <input type="file" asp-for="ImgPath" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                 </div>
             </div>
 

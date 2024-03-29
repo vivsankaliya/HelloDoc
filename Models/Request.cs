@@ -25,17 +25,17 @@ public partial class Request
 
     public string? ConfirmationNumber { get; set; }
 
-    public DateTime CreatedDate { get; set; } = DateTime.Now;
+    public DateTime CreatedDate { get; set; }
 
     public bool? IsDeleted { get; set; }
 
-    public DateTime? ModifiedDate { get; set; } = DateTime.Now;
+    public DateTime? ModifiedDate { get; set; }
 
     public string? DeclinedBy { get; set; }
 
     public bool IsUrgentEmailSent { get; set; }
 
-    public DateTime? LastWellnessDate { get; set; } = DateTime.Now;
+    public DateTime? LastWellnessDate { get; set; }
 
     public bool? IsMobile { get; set; }
 
@@ -43,9 +43,9 @@ public partial class Request
 
     public int? CompletedByPhysician { get; set; }
 
-    public DateTime? LastReservationDate { get; set; } = DateTime.Now;
+    public DateTime? LastReservationDate { get; set; }
 
-    public DateTime? AcceptedDate { get; set; } = DateTime.Now;
+    public DateTime? AcceptedDate { get; set; }
 
     public string? RelationName { get; set; }
 

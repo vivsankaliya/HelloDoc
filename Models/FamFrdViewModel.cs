@@ -2,7 +2,7 @@
 
 namespace HelloDoc.Models
 {
-    public class FamFrdViewModel
+    public class FamFrdView
     {
         [Required]
         public string? FFirstName { get; set; }
@@ -12,6 +12,7 @@ namespace HelloDoc.Models
         public string? FPhoneNumber { get; set; }
         [Required]
         public string? FEmail { get; set; }
+        public string? Discription { get; set; }
         [Required]
         public string? FRelationName { get; set; }
 
@@ -32,5 +33,11 @@ namespace HelloDoc.Models
         [Required]
         public string? State { get; set; }
         public string? ZipCode { get; set; }
+
+        public IFormFile ImgPath { get; set; }
+
+        public string FileName { get; set; }
+
+
     }
 }

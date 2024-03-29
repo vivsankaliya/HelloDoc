@@ -11,5 +11,7 @@ public partial class Region
 
     public string? Abbreviation { get; set; }
 
+    public virtual ICollection<Concierge> Concierges { get; set; } = new List<Concierge>();
+
     public virtual ICollection<RequestClient> RequestClients { get; set; } = new List<RequestClient>();
 }

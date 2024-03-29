@@ -1,0 +1,87 @@
+﻿@model List<HelloDoc.Models.DashBoard>;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<section class="Dashboard">
+    <nav class="navbar bg-light p-0 dash-item">
+        <div class="container-fluid justify-content-start dash-inner-items">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" asp-action="MyProfile" asp-controller="Home">Profile</a>
+        </div>
+    </nav>
+    @* @{
+    if (@TempData["Success"] != null)
+    {
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </symbol>
+    </svg>
+    <div class="d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+    <div>
+    <strong>Success ! </strong>@TempData["Success"] into <strong>@ViewBag.username</strong>
+    </div>
+    </div>
+    </div>
+    }
+    } *@
+    <div class="dashboard-content p-5">
+        <h2>Medical History</h2>
+        <div class="history-table">
+            <table class="table table-borderless mt-4">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="cre-req-row">
+                            <a class="btn cre-req" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor:pointer">Create New Request</a>
+                        </th>
+                    </tr>
+                    <tr class="d-head">
+                        <th scope="col">Create Date ↓</th>
+                        <th scope="col">Current Status</th>
+                        <th class="dh-third" scope="col">Document</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="p-data">
+                            <td class="d-first">  @item.IntDate @item.StrMonth @item.IntYear </td>
+                            <td class="d-second">@item.CurrentStatus</td>
+                            <td class="d-third"><a class="btn patient-docs" href="~/PatientFiles/@item.FileName" target="_blank">Docs</a></td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Request</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Here, I want to create new request for...</p>
+                        <div class="text-center">
+                            <a class="btn req-btn1" asp-controller="Home" asp-action="MyRequest"> Me</a>
+                            <a class="btn req-btn2" asp-controller="Home" asp-action="SomeElse">Some One Else</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn req-btn1">Continue</button>
+                        <button type="button" class="btn req-btn2" data-bs-dismiss="modal">Cancle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

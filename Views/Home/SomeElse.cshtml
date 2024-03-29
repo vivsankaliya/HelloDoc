@@ -1,5 +1,4 @@
 ﻿@model HelloDoc.Models.PatientView;
-
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -7,8 +6,9 @@
 
 }
 
+
 <div class="text-end">
-    <a asp-controller="Home" asp-action="SubAreq" class="btn my-4 backbtn"><i class="bi bi-chevron-left"></i>Back</a>
+    <a asp-controller="Home" asp-action="UDashBoard" class="btn my-4 backbtn"><i class="bi bi-chevron-left"></i>Back</a>
 </div>
 
 <div class="mt-2 px-3 p_body">
@@ -24,12 +24,12 @@
 
             <!-- Patient Contact Information -->
             <div class="row p-2">
+
                 <div class="col-md-6">
                     <input type="text" asp-for="FirstName" class="form-control" placeholder="First name">
                     <span asp-validation-for="FirstName" style="color:red"></span>
                 </div>
                 <div class="col-md-6">
-
                     <input type="text" asp-for="LastName" class="form-control" placeholder="Last name">
                 </div>
 
@@ -86,10 +86,21 @@
                     <span asp-validation-for="State" style="color:red"></span>
                 </div>
             </div>
-            <div class="p-2">
+            <div class=" row p-2">
                 <div class="col-md-6">
                     <input type="text" class="form-control" placeholder="Room # / Suite(Optional)">
                 </div>
+            </div>
+        </div>
+
+        @* ---Relation--- *@
+
+        <div>
+            <div>
+                <h6 class="p-2">Patient Relation</h6>
+            </div>
+            <div class="col-md-6 p-2">
+                <input type="text" class="form-control" placeholder="Room # / Suite(Optional)">
             </div>
         </div>
 

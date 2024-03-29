@@ -19,6 +19,8 @@ public partial class HelloDocContext : DbContext
 
     public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
 
+    public virtual DbSet<Concierge> Concierges { get; set; }
+
     public virtual DbSet<Physician> Physicians { get; set; }
 
     public virtual DbSet<Region> Regions { get; set; }
@@ -32,9 +34,9 @@ public partial class HelloDocContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database=HelloDoc; trusted_connection=true;");
 
-    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>
@@ -81,6 +83,26 @@ public partial class HelloDocContext : DbContext
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
             entity.Property(e => e.UserName).HasMaxLength(256);
+        });
+
+        modelBuilder.Entity<Concierge>(entity =>
+        {
+            entity.HasKey(e => e.ConciergeId).HasName("PK__Concierg__8BCFB3F4B3CDB2CA");
+
+            entity.ToTable("Concierge");
+
+            entity.Property(e => e.ConciergeId).ValueGeneratedNever();
+            entity.Property(e => e.Address).HasMaxLength(150);
+            entity.Property(e => e.City).HasMaxLength(50);
+            entity.Property(e => e.ConciergeName).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.State).HasMaxLength(50);
+            entity.Property(e => e.Street).HasMaxLength(50);
+            entity.Property(e => e.ZipCode).HasMaxLength(50);
+
+            entity.HasOne(d => d.Region).WithMany(p => p.Concierges)
+                .HasForeignKey(d => d.RegionId)
+                .HasConstraintName("FK__Concierge__Regio__49C3F6B7");
         });
 
         modelBuilder.Entity<Physician>(entity =>
