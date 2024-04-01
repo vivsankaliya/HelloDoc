@@ -364,7 +364,7 @@ namespace HelloDoc.Controllers
                     ZipCode = Cg.CZipCode,
                     CreatedDate = DateTime.Now,
                     Address = Cg.CStreet + " " + Cg.CCity + " " + "(" + Cg.CZipCode + ")",
-                   
+
                 };
 
                 await _context.Concierges.AddAsync(concierge);
@@ -467,12 +467,8 @@ namespace HelloDoc.Controllers
                 }
 
                 return RedirectToAction("Index");
-
-
             }
-
         }
-
 
         public IActionResult Login()
         {
@@ -482,7 +478,7 @@ namespace HelloDoc.Controllers
             }
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginModelView lg)
         {
@@ -516,14 +512,12 @@ namespace HelloDoc.Controllers
             return RedirectToAction("UDashBoard", "Home");
         }
 
-
         public IActionResult SignUp(string email)
         {
             ViewBag.isNavbar = false;
             var pl = new PasswordModelView { Email = email };
             return View(pl);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -550,8 +544,6 @@ namespace HelloDoc.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
-
-
         public IActionResult UDashBoard(DashBoard ds)
         {
             if (HttpContext.Session.GetString("UserSession") != null)
@@ -590,6 +582,116 @@ namespace HelloDoc.Controllers
         {
             ViewBag.isNavbar = false;
             return View();
+        }
+
+        public async Task<IActionResult> Profile()
+        {
+
+            ViewBag.MySession = HttpContext.Session.GetString("UserSession").ToString();
+            string email = ViewBag.MySession;
+
+            var reqcli = await _context.RequestClients.FirstOrDefaultAsync(x => x.Email == email);
+
+           
+            return View(reqcli);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(PatientView pv)
+        {
+            
+
+            var aspNetUser = new AspNetUser();
+
+            aspNetUser.Id = Guid.NewGuid().ToString();
+            aspNetUser.Email = pv.Email;
+            aspNetUser.UserName = pv.Email;
+            aspNetUser.PhoneNumber = pv.Mobile;
+            aspNetUser.CreatedDate = DateTime.Now;
+
+
+             _context.AspNetUsers.Update(aspNetUser);
+            await _context.SaveChangesAsync();
+
+
+            var user = new User();
+            user.FirstName = pv.FirstName;
+            user.LastName = pv.LastName;
+            user.Email = pv.Email;
+            user.Mobile = pv.Mobile;
+            user.State = pv.State;
+            user.City = pv.City;
+            user.ZipCode = pv.ZipCode;
+            user.Street = pv.Street;
+            user.BirthDate = pv.BirthDate;
+            user.CreatedDate = DateTime.Now;
+            user.CreatedBy = user.FirstName;
+
+            var createdDate = user.CreatedDate;
+            user.IntDate = createdDate.Day;
+            user.StrMonth = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(createdDate.Month);
+            user.IntYear = createdDate.Year;
+
+
+            user.CreatedBy = pv.FirstName;
+            user.AspNetUserId = aspNetUser.Id;
+
+        
+
+            if (!string.IsNullOrEmpty(user.Mobile))
+            {
+                user.IsMobile = true;
+            }
+            else
+            {
+                user.IsMobile = false;
+            }
+
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            var request = new Request();
+
+            request.Status = 1;
+            request.RequestTypeId = 1;
+            request.IsUrgentEmailSent = true;
+            request.UserId = user.UserId;
+            request.FirstName = pv.FirstName;
+            request.LastName = pv.LastName;
+            request.CreatedDate = DateTime.Now;
+            request.PhoneNumber = pv.Mobile;
+            request.Email = pv.Email;
+            request.PhoneNumber = pv.Mobile;
+            request.CreatedDate = DateTime.Now;
+
+
+            _context.Requests.Update(request);
+            await _context.SaveChangesAsync();
+
+
+            var requestclient = new RequestClient();
+
+            requestclient.Notes = pv.Discription;
+            requestclient.RequestId = request.RequestId;
+            requestclient.FirstName = pv.FirstName;
+            requestclient.LastName = pv.LastName;
+            requestclient.Email = pv.Email;
+            requestclient.PhoneNumber = pv.Mobile;
+            requestclient.City = pv.City;
+            requestclient.State = pv.State;
+            requestclient.Address = pv.City + "," + pv.State + ".";
+            requestclient.Notes = pv.Discription;
+            requestclient.ZipCode = pv.ZipCode;
+            requestclient.IntDate = createdDate.Day;
+            requestclient.StrMonth = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(createdDate.Month);
+            requestclient.IntYear = createdDate.Year;
+
+            _context.RequestClients.Update(requestclient);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("UDashBoard");
         }
 
 

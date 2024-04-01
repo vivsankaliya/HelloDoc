@@ -1,4 +1,4 @@
-﻿@model HelloDoc.Models.PatientView;
+﻿@model HelloDoc.Models.RequestClient;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,18 +8,17 @@
 }
 
 <div class="text-end">
-    <a asp-controller="Home" asp-action="SubAreq" class="btn my-4 backbtn"><i class="bi bi-chevron-left"></i>Back</a>
+    <a asp-controller="Home" asp-action="UDashBoard" class="btn my-4 backbtn"><i class="bi bi-chevron-left"></i>Back</a>
 </div>
 
 <div class="mt-2 px-3 p_body">
 
-    <form asp-action="PatientInfo" method="post" enctype="multipart/form-data">
+    <form asp-action="Profile" >
 
         @* ---patient info *@
         <div>
             <div class="p-2">
                 <h6 class="py-2">Patient Information</h6>
-                <textarea class="form-control" asp-for="Discription" id="patientInfo" rows="3" placeholder="Enter Brief Dtail Of Symptoms (optional)"></textarea>
             </div>
 
             <!-- Patient Contact Information -->
@@ -29,14 +28,7 @@
                     <span asp-validation-for="FirstName" style="color:red"></span>
                 </div>
                 <div class="col-md-6">
-
                     <input type="text" asp-for="LastName" class="form-control" placeholder="Last name">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-md-6">
-                    <input type="date" asp-for="BirthDate" class="form-control" placeholder="Date of Birth">
-                    <span asp-validation-for="BirthDate" style="color:red"></span>
                 </div>
             </div>
         </div>
@@ -53,8 +45,8 @@
                     <span asp-validation-for="Email" style="color:red"></span>
                 </div>
                 <div class="col-md-6 ">
-                    <input type="text" asp-for="Mobile" class="form-control" placeholder="(201)555-0123">
-                    <span asp-validation-for="Mobile" style="color:red"></span>
+                    <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="(201)555-0123">
+                    <span asp-validation-for="PhoneNumber" style="color:red"></span>
                 </div>
             </div>
         </div>
@@ -85,26 +77,11 @@
                     <span asp-validation-for="State" style="color:red"></span>
                 </div>
             </div>
-            <div class="p-2">
-                <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Room # / Suite(Optional)">
-                </div>
-            </div>
         </div>
 
         @* ---upload photo *@
 
-        <div>
-            <div>
-                <h6 class="p-2">(Optional) Upload Photo or Document</h6>
-            </div>
-            <div class="row p-2">
-                <div class="input-group">
-                    <input type="file" asp-for="ImgPath" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                </div>
-            </div>
-
-        </div>
+       
 
         <div class="p-2 py-4  d-flex gap-2 justify-content-end">
             <input type="submit" class="btn btn-primary">
@@ -113,8 +90,4 @@
     </form>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+
